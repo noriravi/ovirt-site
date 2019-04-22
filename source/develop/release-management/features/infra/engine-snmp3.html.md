@@ -75,7 +75,7 @@ Configuration for sending SNMPv3 AuthPriv traps as user 'ovirtengine'  with snmp
       # service snmpd stop
       # service snmptrapd stop
 
-#### Edit /etc/snmp/snmptrapd.conf to support version 3 traps and log traps to file.
+#### Edit /etc/snmp/snmptrapd.conf to support version 3 traps and log traps to file. 
 
       # version 3 traps: allow user ovirtengine to log,execute,net
       authUser log,execute,net ovirtengine
@@ -85,6 +85,10 @@ Configuration for sending SNMPv3 AuthPriv traps as user 'ovirtengine'  with snmp
       # Log incomming traps to /var/log/snmptrapd.log
       logOption f /var/log/snmptrapd.log
 
+With latest net-snmp 5.7.3 we need to specify logOption as an library specific directive as below.
+
+      # Log incomming traps to /var/log/snmptrapd.log
+      [snmp] logOption f /var/log/snmptrapd.log
 
 #### Create the users
 
